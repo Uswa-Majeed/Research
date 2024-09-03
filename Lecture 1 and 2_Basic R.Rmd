@@ -1,0 +1,341 @@
+---
+title: "R Notebook_Lecture 1 and 2 MS Statistics" R Language"
+output:
+  word_document: default
+  pdf_document: default
+  html_notebook: default
+---
+#####Download and install R Studio from http://www.rstudio.com/download#####
+
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+setwd("E:/MS Stats R language/Asifa R language lectures")
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r}
+setwd("E:/MS Stats R language/Asifa R language lectures")
+```
+
+#Basic commands #
+Common Operators
+Operator   Function
++          addition
+_          Subtraction
+*         Multiplication
+/         Division
+^         Exponent
+```{r}
+#for comments use "#", text to the right of # is ignored
+2+7 #symbol in output [] indicate vector
+x<-5 #assignment operator (equal sign i.e. <-)assignment is right to left
+x
+x <- 5 ## nothing printed
+x ## auto-printing occurs
+print(x) ## explicit printing
+7->y# may be used assignment operator (equal sign i.e. -> assignment is from left to right)
+y
+x^2->z
+z
+z<-3 #when assign new value to variable, old automatically deleted
+z
+z<-X+6- #Incomplete command, when run at end we will see "+" and in chunk see red alarm
+  z<-(x+6)
+  
+```
+##
+```{r}
+```
+
+######Typically with interactive work, we do not explicitly print objects with the
+print function; it is much easier to just auto-print them by typing the name of
+the object and hitting return/enter. However, when writing scripts, functions,
+or longer programs, there is sometimes a need to explicitly print objects
+because auto-printing does not work in those settings.
+#When an R vector is printed you will notice that an index for the vector
+is printed in square brackets [] on the side. For example, see this integer
+sequence of length 20.
+The numbers in the square brackets are not part of the vector itself, they are
+merely part of the printed output.
+#Often, the printed output may have additional bells and whistles to
+make the output more friendly to the users. However, these bells and whistles
+are not inherently part of the object.
+```{r}
+x <- 11:50
+x
+```
+
+##Example: Find the distance between the two points (2,4,6) and (4.2,7.1,8.6)
+```{r}
+t<-sqrt((2-4.2)^2+(4-7.1)^2+(6-8.6)^2)
+t
+```
+##Comparison Operators
+#Operator  Comparison
+# >         is greater than
+# <          is less than
+# >=         is greater or equal
+# <=         is less or equal
+# ==         is equal to
+# !=         is not equal to
+# !         logical not
+# &         logical and
+# |          logical or
+```{r}
+height.inches<-c(68, 65, 70, 71, 69)
+ height.inches<= 70 #tell situation in TRUE/FALSE
+height.inches == 70
+  height.inches != 70
+ which(height.inches >= 70) #tell position of the number in list/vector
+which(70)  #incomplete command
+ all(height.inches <= 70) #Give status TRUE/FALS
+  any(height.inches <= 65)#Give status TRUE/FALS
+which(height.inches <= 65) #Give status TRUE/FALS
+```
+###R function#
+#Mathematical and Statistical functions
+#Function has two parts i.e. function name(add argument in parathesis)
+```{r}
+rm(#assign 3 to x)
+
+```
+##ls function, ls(),  it is standard function, built in function, base function #(automatically built in function)
+A list is represented as a vector but can contain objects of different classes. Indeed, that’s usually why we use them.
+```{r}
+ls() #function tell name of variables stored in memory
+?ls  #open help on list topic
+rm() #use with care
+rm(y)
+a<-1
+b<-5
+c<-10
+ls()
+rm(a)
+ls()
+a
+rm(list = ls()) #delte all variables in one command
+x
+```
+##Practice Try some functions
+```{r}
+x<-c(3,1,8,5,4,10);x
+```
+###acceptable object name in functions
+#letters, number, dot, underline charcter allowed
+#name start with letter not other character/mathematical operator
+#maximum 32 chracters
+###Defining a Vector
+#The c() function can be used to create vectors of objects by concatenating/combining things together.
+#c function
+#c("combine") function
+# c(), vector elements seprated by commas
+#Vector is basic data structure in R. A vector is a series of elements that are of same type. Such a series of obs. stored in R. It keeps track of the order of elements in R
+You can also use the vector() function to initialize vectors. 
+
+```{r}
+c(3,1,8,5,4,10)
+x<-c(3,1,8,5,4,10)
+x
+xx<-vector("numeric",length=10)
+xx
+y=x+10 
+y
+2*x 
+x<-c(3,1,8,5,4,10)
+z<-c(1,2)
+x-z
+
+```
+#Vectors 
+Vectors are basic data structure in R. A vector is series of elements that are of same type. Such series of observation stored in R. This means that it keeps track of the order of the elements.
+Reasons
+1. It is possible to make changes in vector item by item.
+2. standard arithmetic functions and operators apply
+```{r}
+c(1,2,3,4)/2
+a<-c(1,2,3)
+a/2
+a^2
+c(1,2,3,4)/c(4,3,2,1)
+```
+#Creating a Vector
+
+```{r}
+x<-c(0,5,6,7)#numeric
+y<-c(TRUE,FALSE)#logical
+z<-c(T,F)#logical
+l<-c("a","b","c")#character
+m<-9:20 #integer
+n<-c(1+0i,2+6i)#complex
+```
+#Mixing Objects
+There are occasions when different classes of R objects get mixed together. Sometimes this happens by accident but it can also happen on purpose. So what happens with the following code?
+y<-c(1.7,"a")
+[1] "1.7" "a" 
+yy<-c(TRUE,2)
+[1] 1 2
+Note: TRUE=1 and FALSE=2 by default in R
+
+yyy<-c("A",TRUE)
+[1] "A"    "TRUE"
+
+In each case above, we are mixing objects of two different classes in a vector. But remember that the only rule about vectors says this is not allowed. When different objects are mixed in a vector, coercion occurs so that every element in the vector is of the same class.
+
+In the example above, we see the effect of implicit coercion. What R tries to do is find a way to represent all of the objects in the vector in a reasonable fashion. Sometimes this does exactly what you want and…sometimes not. For example, combining a numeric object with a character object will create a character vector, because numbers can usually be easily represented as strings.
+
+
+```{r}
+y<-c(1.7,"a")
+yy<-c(TRUE,2) #Note: TRUE=1 and FALSE=2 by default in R
+yyy<-c("A",TRUE)
+
+
+```
+#Explicit Coercion
+Objects can be explicitly coerced from one class to another using the as.* functions, if available.
+x<-0:6
+class(x)
+as.numeric(x)
+as.logical(x)
+as.character(x)
+
+By convention in logical 0 is FALSE & all >0 TRUE
+Sometimes, R can’t figure out how to coerce an object and this can result in NAs being produced. When nonsensical coercion takes place, you will usually get a warning from R.
+x<-c("a","b","c")
+x2<-as.numeric(x) #when you convert class always give object a new name
+x3<-as.logical(x)
+x4<-as.complex(x)
+#Sequence Function
+seq(min,max,common difference)
+```{r}
+seq(1,50,1)
+seq(2,50,2) #If number is odd
+seq(2,53,2)
+1:50 #equivalent to sequence difference with common interval 1
+x<-seq(5,100,10)
+x
+length(x)
+print(x) #to show results. In console just enter but in program use print x.
+print(seq(5,100,10))#Alternative command using two functions 
+```
+#To convert console into input function using scan(). In Scan function size not specified in advance.When input mode, curser looks like weight.
+```{r}
+y<-scan()#press double enter when finished data entry (out mode)
+```
+#Indexing (Position), In vector single index; in matrix two index
+```{r}
+y<-scan()
+y[3] #for indexing it will display 3rd item
+min(y)
+max(y)
+which.min(y)
+which.max(y)
+```
+#Repeat Function
+rep()
+rep(number/object/element,no. of times)
+```{r}
+rep(5,10)
+rep(c(1,2),6)
+x<-c(1,2,3)
+x
+rep(x,each=3)
+c(rep(1,4),rep(2,4))
+```
+#Matrix (Two dimensial arrangment);variable name is case sensitive
+matrix(vector,rows,columns,arrangement, by row/col TRUE/FALSE)
+matrix(data=x,nrow=5,ncol=2, by row=FALSE)
+matrix(data=x,nrow=5,ncol=2, by row=FALSE)
+```{r}
+x<-c(3,4,5,8,2,4,3,4,4,5)
+matrix(data=x,nrow=5,ncol=2, byrow=FALSE)
+matrix(data=x,nrow=5,ncol=2,FALSE)
+a<-matrix(data=x,nrow=5,ncol=2, byrow=TRUE)
+a<-matrix(x,5,2,FALSE)
+b<-matrix(x,2,5,FALSE)
+b
+#Indexing in matrix  matrix name(row no., col. no.)??
+b[2,4]
+b[3,]
+b[,2]
+z<-c(1,4,7,9)
+zz<-as.matrix(z)
+t(zz)
+dim(zz)
+length(zz)
+dim(b)
+length(b) ##for matrix dimension is sensible function not length
+```
+#Operation of Matrix
+```{r}
+A<-matrix(c(3,2,8,9),nrow=2)
+A
+B<-matrix(c(1,5,0,9),nrow=2)
+B
+B<-matrix(c(1,5,0,9),nrow=2, TRUE)# columns not mentioned WARNING message data length differs from size of matrix: #[4 != 2 x 1]
+B
+C<-matrix(c(3,4),nrow=2);C
+A+C
+A+B
+A*B
+A*C ##not matrix multiplication
+A%*%B ##It is matrix multiplication
+A%*%C
+det(A)
+det(c)
+A.inv<-solve(A)
+A%*%A.inv
+round(x,d)# round x to d decimal places
+round(A%*%A.inv,4)
+data<-matrix(c(2,4,6,8,10,3,15,29,12,8),nrow=5)
+data
+x<-c(2,4,6,8,10);y<-c(3,15,29,12,8)
+data<-matrix(c(x,y),nrow=5)
+data<-cbind(x,y)
+colnames(data)<-c("x","f")
+data
+rownames(data)<-c("a","b","c","d","e")
+data
+dim(data)
+
+```
+#Data Frame Function, data.frame(); Two or more than two vectors seprated by comma, 
+```{r}
+x<-seq(2,10,2)
+f<-c(3,15,29,12,8)
+data2<-data.frame(x,f)
+data2
+```
+#is.matrix
+It tells that a object which is stored in its memory is in this form or not.
+```{r}
+is.matrix(data)
+is.matrix(data2)
+x<-c(1,2,3,4);y<-2*x
+x
+y
+class(x) #tells either matrix, vector or else
+class(data)
+class(data2)
+```
+##Numbers
+Numbers in R are generally treated as numeric objects (i.e. double precision real numbers). This means that even if you see a number like “1” or “2” in R, which you might think of as integers, they are likely represented behind the scenes as numeric objects (so something like “1.00” or “2.00”). This isn’t important most of the time…except when it is.
+
+```{r}
+#If you explicitly want an integer, you need to specify the L suffix. So entering 1 in R gives you a numeric object; entering 1L explicitly gives you an integer object.
+t<-2
+t
+tt<-2L
+class(tt)
+0/0
+1/Inf
+
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
